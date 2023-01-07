@@ -22,12 +22,12 @@ ingress:
   annotations: {}
 
 resources:
-#   requests:
-#     cpu: 50m
-#     memory: 128Mi
-#   limits:
-#     cpu: 100m
-#     memory: 256Mi
+   requests:
+     cpu: 10m
+     memory: 100Mi
+   limits:
+     cpu: 100m
+     memory: 150Mi
 
 nodeSelector: {}
 tolerations: []
