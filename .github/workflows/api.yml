@@ -13,12 +13,18 @@ jobs:
     outputs:
       semver: ${{ steps.version.outputs.VERSION }}
     steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - id: version
         name: Version
         run: |
+          ls -la
           curl https://github.com/solugo/gitversion/releases/latest/download/gitversion-linux-x64 -Lso gitversion
           chmod a+x gitversion
-          echo "VERSION=$(./gitversion -c api --dirty_ignore)" >> $GITHUB_OUTPUT
+          ./gitversion ./ -c api --dirty_ignore
+          echo "$(./gitversion ./ -c api --dirty_ignore)"
+          echo "VERSION=$(./gitversion ./ -c api --dirty_ignore)" >> $GITHUB_OUTPUT
 
   build:
     uses: Implex1v/pwgen/.github/workflows/_build.yml@main
