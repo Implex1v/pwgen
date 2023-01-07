@@ -23,7 +23,7 @@ class PasswordService(
             }
         }
 
-        meterRegistry.counter("password_generated", listOf(Tag.of("length", length.toString())))
+        meterRegistry.counter("password_generated", listOf(Tag.of("length", length.toString()))).increment()
         return builder.toString()
     }
 
