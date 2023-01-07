@@ -1,0 +1,48 @@
+name: api
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "api/**"
+  workflow_dispatch:
+    
+jobs:
+  version:
+    runs-on: ubuntu-22.04
+    outputs:
+      semver: ${{ steps.version.outputs.VERSION }}
+    steps:
+      - id: version
+        name: Version
+        run: |
+          curl https://github.com/solugo/gitversion/releases/latest/download/gitversion-linux-x64 -Lso gitversion
+          chmod a+x gitversion
+          echo "VERSION=$(./gitversion -c api --dirty_ignore)" >> $GITHUB_OUTPUT
+
+  build:
+    uses: Implex1v/pwgen/.github/workflows/_build.yml@main
+    needs:
+    - version
+    with:
+      version: ${{ needs.version.outputs.semver }}
+      component: api
+    secrets:
+      cr: ${{ secrets.CR }}
+      cr_token: ${{ secrets.GITHUB_TOKEN }}
+      cr_user: ${{ secrets.CR_USER }}
+
+  deploy:
+    uses: Implex1v/pwgen/.github/workflows/_deploy.yml@main
+    needs:
+    - version
+    - build
+    with:
+      version: "${{ needs.version.outputs.semver }}"
+      component: api
+    secrets:
+      cr: ${{ secrets.CR }}
+      cr_token: ${{ secrets.GITHUB_TOKEN }}
+      cr_user: ${{ secrets.CR_USER }}
+      domain: ${{ secrets.BASE_DOMAIN }}
+      kube_config: ${{ secrets.KUBE_CONFIG }}
