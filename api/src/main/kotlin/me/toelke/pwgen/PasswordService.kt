@@ -1,11 +1,15 @@
 package me.toelke.pwgen;
 
+import io.micrometer.core.instrument.MeterRegistry
+import io.micrometer.core.instrument.Tag
 import java.lang.StringBuilder
 import java.security.SecureRandom
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-class PasswordService {
+class PasswordService(
+    private val meterRegistry: MeterRegistry
+) {
     fun generatePassword(
         length: Int,
         characters: String = DefaultCharacters
@@ -19,6 +23,7 @@ class PasswordService {
             }
         }
 
+        meterRegistry.counter("password_generated", listOf(Tag.of("length", length.toString())))
         return builder.toString()
     }
 
