@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $domain := printf "pwgen.%s" (.Chart.Name) (.Values.baseDomain)  }}
+{{- $domain := printf "pwgen.%s" (.Values.baseDomain)  }}
 {{- $fullName := include "ui.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- if and .Values.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
@@ -14,13 +14,8 @@ metadata:
   labels:
     {{- include "ui.labels" . | nindent 4 }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt
-    nginx.ingress.kubernetes.io/server-snippet: |
-      location ~* "^/q/" {
-          deny all;
-          return 404;
-      }
     {{- with .Values.ingress.annotations }}
       {{- toYaml . | nindent 4 }}
     {{- end }}
@@ -34,7 +29,7 @@ spec:
     - host: "{{ $domain }}"
       http:
         paths:
-          - path: /pwgen(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
