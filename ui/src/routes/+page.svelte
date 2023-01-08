@@ -20,5 +20,5 @@
 <p class="text-2xl py-4">History</p>
 
 {#each passwords as password}
-    <PasswordCard password={password} />
+    <PasswordCard {password} />
 {/each}
