@@ -1,5 +1,7 @@
 <script lang="ts">
     import "../app.css";
+    import {Icon} from "svelte-awesome";
+    import {github} from "svelte-awesome/icons";
     const year = new Date().getFullYear();
 </script>
 <div class="bg-gray-900">
@@ -42,7 +44,7 @@
                     <h3 class="font-bold">About</h3>
                     <p class="py-4 text-gray-400">
                         PWGEN is a web tool for password generation. <br>
-                        PWGEN &copy; {year}
+                        &copy; PWGEN {year}
                     </p>
                 </div>
             </div>
@@ -51,7 +53,10 @@
                     <h3 class="font-bold">Social</h3>
                     <ul class="list-reset items-center pt-3">
                         <li>
-                            <a class="inline-block no-underline hover:text-amber-700 py-1 text-gray-400" href="https://github.com/Implex1v/pwgen">GitHub</a>
+                            <a class="inline-block no-underline hover:text-amber-700 py-1 text-lg text-gray-400 inline-block align-middle" href="https://github.com/Implex1v/pwgen">
+                                <span>GitHub</span>
+                                <Icon data={github} scale="1.1"/>
+                            </a>
                         </li>
                     </ul>
                 </div>
