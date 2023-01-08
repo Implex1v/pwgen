@@ -3,7 +3,7 @@
     import PasswordCard from "../components/PasswordCard.svelte";
     import PasswordGenerator from "../components/PasswordGenerator.svelte";
 
-    let passwords = [];
+    let passwords: Array<string> = [];
 
     async function addPassword(event: CustomEvent<PasswordEvent>) {
         passwords.push(event.detail.password);

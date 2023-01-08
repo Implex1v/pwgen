@@ -65,7 +65,7 @@
                                 href="https://github.com/Implex1v/pwgen"
                             >
                                 <span>GitHub</span>
-                                <Icon data={github} scale="1.1" />
+                                <Icon data={github} scale={1.1} />
                             </a>
                         </li>
                     </ul>

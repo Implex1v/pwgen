@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Icon } from "svelte-awesome";
-    import { eye, eyeSlash, key } from "svelte-awesome/icons";
+    import { eye, eyeSlash } from "svelte-awesome/icons";
 
     export let password = "";
     let showPassword = false;
@@ -16,12 +16,12 @@
     <div class="pt-2">
         {#if showPassword}
             <button on:click={toggleVisibility} class="hover:text-amber-700">
-                <Icon data={eyeSlash} class="pb-1" scale="1.3" />
+                <Icon data={eyeSlash} class="pb-1" scale={1.3} />
             </button>
             <span>{password}</span>
         {:else}
             <button on:click={toggleVisibility} class="hover:text-amber-700">
-                <Icon data={eye} class="pb-1" scale="1.3" />
+                <Icon data={eye} class="pb-1" scale={1.3} />
             </button>
             <span>****************</span>
         {/if}
