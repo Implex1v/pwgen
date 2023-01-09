@@ -18,7 +18,9 @@ jobs:
           fetch-depth: 0
       - name: version
         run: |
-          echo "VERSION=$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS='./ -c ui --dirty_ignore' bash)" >> $GITHUB_OUTPUT
+          F="$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS='./ -c api --dirty_ignore' bash)"
+          echo "$F"
+          echo "VERSION=$F" >> $GITHUB_OUTPUT
 
   build:
     uses: Implex1v/pwgen/.github/workflows/_build.yml@main
