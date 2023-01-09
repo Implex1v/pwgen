@@ -9,18 +9,9 @@ on:
     
 jobs:
   version:
-    runs-on: ubuntu-22.04
-    outputs:
-      version: ${{ steps.version.outputs.VERSION }}
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: version
-        run: |
-          F="$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS='./ -c api --dirty_ignore' bash)"
-          echo "$F"
-          echo "VERSION=$F" >> $GITHUB_OUTPUT
+    uses: Implex1v/pwgen/.github/workflows/_version.yml@main
+    with:
+      component: api
     
   build:
     uses: Implex1v/pwgen/.github/workflows/_build.yml@main
