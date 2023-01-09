@@ -16,10 +16,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: version
+      - id: version
         run: |
-          F="$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS='./ -c api --dirty_ignore' bash)"
-          echo "$F"
+          F="$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS='./ -c ui --dirty_ignore' bash)"
           echo "VERSION=$F" >> $GITHUB_OUTPUT
 
   build:
