@@ -11,7 +11,7 @@ jobs:
   version:
     uses: Implex1v/pwgen/.github/workflows/_version.yml@main
     with:    
-      component: api
+      component: ui
 
   build:
     uses: Implex1v/pwgen/.github/workflows/_build.yml@main
