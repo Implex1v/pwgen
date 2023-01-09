@@ -8,7 +8,8 @@ on:
         type: string
         required: true
     outputs:
-      version: ${{ jobs.version.outputs.version }}
+      version:
+        value: ${{ jobs.version.outputs.version }}
 
 defaults:
   run:
