@@ -6,8 +6,9 @@
     let passwords: Array<string> = [];
 
     async function addPassword(event: CustomEvent<PasswordEvent>) {
-        passwords.push(event.detail.password);
-        passwords = passwords;
+        const tmp = [event.detail.password];
+        tmp.push(...passwords);
+        passwords = tmp;
     }
 </script>
 
