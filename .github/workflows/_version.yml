@@ -27,5 +27,4 @@ jobs:
           fetch-depth: 0
       - name: version
         run: |
-          echo "VERSION=$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS="./ -c ${{ inputs.component }} --dirty_ignore" bash)" >> $GITHUB_OUTPUT
-          echo "$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS="./ -c ${{ inputs.component }} --dirty_ignore" bash)"
+          echo "VERSION=$(curl -Ls https://solugo.github.io/gitversion/run.sh | ARGS='./ -c ${{ inputs.component }} --dirty_ignore' bash)" >> $GITHUB_OUTPUT
