@@ -24,7 +24,7 @@
         });
     };
 
-    const onCopy = async() => {
+    const onCopy = async () => {
         await navigator.clipboard.writeText(password);
         copied = true;
     };
@@ -37,16 +37,18 @@
     </button>
     <div class="flex space-x-0">
         <input
-          type="text"
-          bind:value={password}
-          readonly
-          class="border-y border-l border-gray-500 rounded-x rounded-l text-lg py-1 bg-gray-900 px-2"
-          size="50"
+            type="text"
+            bind:value={password}
+            readonly
+            class="border-y border-l border-gray-500 rounded-x rounded-l text-lg py-1 bg-gray-900 px-2"
+            size="50"
         />
         <button
-          on:click={onCopy}
-          class="border border-gray-500 rounded-r text-lg py-1 px-4 hover:text-green-600 {copied ? 'text-green-600' : ''}"
-          class:copied
+            on:click={onCopy}
+            class="border border-gray-500 rounded-r text-lg py-1 px-4 hover:text-green-600 {copied
+                ? 'text-green-600'
+                : ''}"
+            class:copied
         >
             <Icon data={copy} />
             {#if copied}

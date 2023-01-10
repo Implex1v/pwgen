@@ -1,4 +1,4 @@
 export interface PasswordModel {
-  password: string,
-  generatedAt: Date,
+    password: string;
+    generatedAt: string;
 }

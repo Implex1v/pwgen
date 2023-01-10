@@ -31,14 +31,11 @@
         dispatcher("passwordDelete", {
             password: password,
         });
-    }
+    };
 </script>
 
 <div class="my-2 flex">
-    <div
-      on:click={toggleVisibility}
-      class="border rounded-l p-4 border-gray-500 hover:text-amber-700 cursor-pointer"
-    >
+    <div on:click={toggleVisibility} class="border rounded-l p-4 border-gray-500 hover:text-amber-700 cursor-pointer">
         <button>
             {#if showPassword}
                 <Icon data={eyeSlash} class="pb-1" scale={1.3} />
@@ -47,28 +44,22 @@
             {/if}
         </button>
     </div>
-    <div
-      on:click={onDelete}
-      class="border p-4 border-gray-500 hover:text-red-600 cursor-pointer"
-    >
+    <div on:click={onDelete} class="border p-4 border-gray-500 hover:text-red-600 cursor-pointer">
         <button>
             <Icon data={trash} class="pb-1" scale={1.3} />
         </button>
     </div>
-    <div
-      on:click={onCopy}
-      class="border p-4 border-gray-500 hover:text-amber-700 cursor-pointer"
-    >
+    <div on:click={onCopy} class="border p-4 border-gray-500 hover:text-amber-700 cursor-pointer">
         <button>
             {#if copied}
                 <Icon data={check} class="pb-1 text-green-600" scale={1.3} />
-            {:else }
+            {:else}
                 <Icon data={clipboard} class="pb-1" scale={1.3} />
             {/if}
         </button>
     </div>
     <div class="border p-4 border-gray-500">
-        <span>{password.generatedAt.toISOString()}</span>
+        <span>{password.generatedAt}</span>
     </div>
     <div class="border rounded-r p-4 border-gray-500 flex-auto">
         {#if showPassword}
